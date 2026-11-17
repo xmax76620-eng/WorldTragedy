@@ -6,445 +6,141 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<meta name="theme-color" content="#090d14">
+<meta name="theme-color" content="#0b1120">
 
-<title>WORLD TRAGEDIES — Atlas mondial</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<title>WORLD TRAGEDIES</title>
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 
 <style>
 
-:root {
+:root{--bg:#0b1120;--panel:#141f31;--panel2:#1c2b41;--line:#2b3b52;--text:#edf3fc;--muted:#9aabc1;--red:#df6268;--gold:#e6b85c;--blue:#6ca8ed}
 
-  --bg:#090d14;
+*{box-sizing:border-box}
 
-  --panel:#121c29;
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
 
-  --panel2:#172435;
+button,input,select,textarea{font:inherit}
 
-  --line:#263548;
+button{cursor:pointer;background:var(--panel2);border:1px solid var(--line);color:var(--text);padding:10px 14px;border-radius:7px}
 
-  --text:#f3f5f8;
+button:hover{border-color:var(--blue)}
 
-  --muted:#9ba9b9;
+button.primary{background:#a83f48;border-color:#a83f48}
 
-  --gold:#d7b36b;
+header{padding:20px 4%;background:#101a2b;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
 
-  --red:#d36d69;
+.logo{font-size:23px;font-weight:900;letter-spacing:2px}
 
-  --blue:#7ca8d8;
+.logo span{color:var(--red)}
 
-  --green:#82b69a;
+header small{display:block;font-size:10px;color:var(--muted);letter-spacing:2px;margin-top:5px}
 
-}
+.layout{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 80px)}
 
-* {
+aside{padding:18px 12px;border-right:1px solid var(--line);background:#0e1726}
 
-  box-sizing:border-box;
+.navtitle{font-size:10px;letter-spacing:2px;color:var(--muted);padding:18px 10px 8px}
 
-}
+nav button{width:100%;display:block;text-align:left;margin:3px 0;background:transparent;border-color:transparent}
 
-body {
+nav button.active{background:#26364d;border-color:#405674}
 
-  margin:0;
+main{padding:28px;max-width:1500px;width:100%;margin:auto;min-width:0}
 
-  background:var(--bg);
+.page{display:none}.page.active{display:block}
 
-  color:var(--text);
+h1{font-size:27px;margin:0 0 8px}
 
-  font-family:"DM Sans",sans-serif;
+.subtitle{color:var(--muted);margin:0 0 24px;line-height:1.5}
 
-}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-bottom:22px}
 
-button,input,select {
+.stat,.section,.event{background:var(--panel);border:1px solid var(--line);border-radius:10px}
 
-  font:inherit;
+.stat{padding:18px}.stat strong{display:block;font-size:27px;margin-bottom:6px}.stat span{font-size:12px;color:var(--muted)}
 
-}
+.section{padding:20px;margin-bottom:20px}
 
-button {
+.section h2{font-size:17px;margin:0 0 16px}
 
-  cursor:pointer;
+.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:16px}
 
-}
+input,select,textarea{background:#0c1625;border:1px solid var(--line);color:var(--text);border-radius:7px;padding:11px}
 
-header {
+input:focus,select:focus,textarea:focus{outline:1px solid var(--blue)}
 
-  position:sticky;
+.search{flex:1;min-width:180px}
 
-  top:0;
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 
-  z-index:20;
+.event{overflow:hidden;display:flex;flex-direction:column}
 
-  display:flex;
+.eventbar{height:6px;background:var(--red)}
 
-  justify-content:space-between;
+.eventbody{padding:16px;display:flex;flex-direction:column;flex:1}
 
-  align-items:center;
+.meta{font-size:11px;color:var(--muted);margin-bottom:9px}
 
-  padding:18px 25px;
+.event h3{font-size:16px;line-height:1.4;margin:0 0 9px}
 
-  background:#0c131e;
+.event p{font-size:13px;line-height:1.55;color:#b5c3d5;margin:0 0 14px}
 
-  border-bottom:1px solid var(--line);
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
 
-}
+.tag{font-size:10px;padding:5px 8px;border-radius:20px;background:#26374e;color:#c6d9ef}
 
-.logo {
+.actions{display:flex;gap:7px;margin-top:auto}
 
-  font-family:"Playfair Display",serif;
+.actions button{font-size:12px;padding:8px;flex:1}
 
-  font-size:23px;
+.favorite{color:var(--gold)}
 
-  letter-spacing:2px;
+.empty{padding:35px;text-align:center;color:var(--muted)}
 
-  color:var(--gold);
+.timeline{border-left:2px solid #425873;margin-left:12px;padding-left:22px}
 
-}
+.timelineitem{position:relative;padding:0 0 23px}
 
-header span {
+.timelineitem:before{content:"";position:absolute;width:10px;height:10px;background:var(--red);border-radius:50%;left:-28px;top:5px}
 
-  font-size:10px;
+.timelineitem strong{color:var(--gold)}
 
-  color:var(--muted);
+.timelineitem h3{font-size:15px;margin:5px 0}
 
-}
+.timelineitem p{color:var(--muted);font-size:13px;margin:0}
 
-main {
+#map{height:520px;border-radius:9px;z-index:1}
 
-  max-width:1250px;
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
 
-  margin:auto;
+.formgrid label{display:flex;flex-direction:column;gap:7px;color:var(--muted);font-size:12px}
 
-  padding:25px;
+.formgrid .full{grid-column:1/-1}
 
-}
+textarea{min-height:110px;resize:vertical}
 
-.hero {
+.notice{font-size:12px;color:var(--muted);line-height:1.5}
 
-  padding:45px 30px;
+.modal{position:fixed;inset:0;background:#000b;z-index:20;display:none;align-items:center;justify-content:center;padding:18px}
 
-  border:1px solid var(--line);
+.modal.show{display:flex}
 
-  border-radius:22px;
+.modalbox{background:var(--panel);border:1px solid var(--line);border-radius:12px;max-width:700px;width:100%;max-height:90vh;overflow:auto;padding:24px}
 
-  background:linear-gradient(120deg,#172435,#101925);
+.modalhead{display:flex;justify-content:space-between;gap:12px;align-items:center}
 
-  margin-bottom:25px;
+.modalhead h2{font-size:22px;margin:0}
 
-}
+.modalbox p{line-height:1.7;color:#c0ccdc}
 
-.hero small {
+footer{padding:24px;text-align:center;color:#778ba5;font-size:11px;border-top:1px solid var(--line)}
 
-  color:var(--gold);
+@media(max-width:950px){.grid{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}}
 
-  letter-spacing:3px;
-
-}
-
-.hero h1 {
-
-  font-family:"Playfair Display",serif;
-
-  font-size:clamp(35px,6vw,65px);
-
-  margin:20px 0;
-
-}
-
-.hero h1 em {
-
-  color:var(--gold);
-
-  font-style:normal;
-
-}
-
-.hero p {
-
-  color:var(--muted);
-
-  line-height:1.8;
-
-  max-width:700px;
-
-}
-
-.stats {
-
-  display:grid;
-
-  grid-template-columns:repeat(4,1fr);
-
-  gap:12px;
-
-  margin:25px 0;
-
-}
-
-.stat {
-
-  background:var(--panel);
-
-  border:1px solid var(--line);
-
-  border-radius:14px;
-
-  padding:18px;
-
-}
-
-.stat strong {
-
-  display:block;
-
-  font-size:25px;
-
-  color:var(--gold);
-
-}
-
-.stat small {
-
-  color:var(--muted);
-
-  font-size:10px;
-
-}
-
-.toolbar {
-
-  background:var(--panel);
-
-  border:1px solid var(--line);
-
-  border-radius:16px;
-
-  padding:20px;
-
-  margin-bottom:20px;
-
-}
-
-.toolbar h2 {
-
-  font-family:"Playfair Display",serif;
-
-}
-
-.filters {
-
-  display:grid;
-
-  grid-template-columns:2fr 1fr 1fr;
-
-  gap:10px;
-
-}
-
-input,select {
-
-  width:100%;
-
-  padding:14px;
-
-  background:#090f18;
-
-  color:white;
-
-  border:1px solid var(--line);
-
-  border-radius:10px;
-
-}
-
-.categories {
-
-  display:flex;
-
-  flex-wrap:wrap;
-
-  gap:8px;
-
-  margin-top:15px;
-
-}
-
-.chip {
-
-  padding:8px 13px;
-
-  border-radius:30px;
-
-  border:1px solid var(--line);
-
-  background:transparent;
-
-  color:var(--muted);
-
-}
-
-.chip.active {
-
-  color:var(--gold);
-
-  border-color:var(--gold);
-
-}
-
-.events {
-
-  display:grid;
-
-  grid-template-columns:repeat(2,minmax(0,1fr));
-
-  gap:15px;
-
-}
-
-.event {
-
-  background:var(--panel);
-
-  border:1px solid var(--line);
-
-  border-radius:15px;
-
-  padding:18px;
-
-}
-
-.event h3 {
-
-  font-family:"Playfair Display",serif;
-
-  font-size:20px;
-
-}
-
-.event p {
-
-  color:var(--muted);
-
-  line-height:1.7;
-
-  font-size:13px;
-
-}
-
-.event .date {
-
-  color:var(--gold);
-
-  font-size:11px;
-
-}
-
-.event button {
-
-  background:transparent;
-
-  border:1px solid var(--gold);
-
-  color:var(--gold);
-
-  border-radius:8px;
-
-  padding:9px 13px;
-
-}
-
-#map {
-
-  height:450px;
-
-  border-radius:15px;
-
-  margin-top:25px;
-
-  border:1px solid var(--line);
-
-}
-
-.modal {
-
-  display:none;
-
-  position:fixed;
-
-  inset:0;
-
-  z-index:50;
-
-  background:#000d;
-
-  padding:20px;
-
-  overflow:auto;
-
-}
-
-.modal-content {
-
-  max-width:750px;
-
-  margin:30px auto;
-
-  padding:25px;
-
-  background:var(--panel);
-
-  border:1px solid var(--line);
-
-  border-radius:18px;
-
-}
-
-.modal-content h2 {
-
-  font-family:"Playfair Display",serif;
-
-  color:var(--gold);
-
-}
-
-.close {
-
-  float:right;
-
-  background:transparent;
-
-  border:0;
-
-  color:white;
-
-  font-size:25px;
-
-}
-
-@media(max-width:700px) {
-
-  main {padding:13px}
-
-  .stats {grid-template-columns:repeat(2,1fr)}
-
-  .filters {grid-template-columns:1fr}
-
-  .events {grid-template-columns:1fr}
-
-  .hero {padding:25px 18px}
-
-  .hero h1 {font-size:38px}
-
-  #map {height:350px}
-
-}
+@media(max-width:650px){.layout{grid-template-columns:1fr}aside{border-right:0;border-bottom:1px solid var(--line);padding:8px}nav{display:flex;overflow:auto;gap:4px}nav button{white-space:nowrap;width:auto;font-size:11px;padding:9px} .navtitle{display:none}main{padding:16px}.grid{grid-template-columns:1fr}.formgrid{grid-template-columns:1fr}.formgrid .full{grid-column:auto}header{padding:15px}.logo{font-size:19px}}
 
 </style>
 
@@ -454,125 +150,191 @@ input,select {
 
 <header>
 
-  <div class="logo">WORLD TRAGEDIES</div>
+ <div class="logo">WORLD <span>TRAGEDIES</span><small>ENCYCLOPÉDIE MONDIALE DES CATASTROPHES</small></div>
 
-  <span>ATLAS HISTORIQUE MONDIAL</span>
+ <div class="actions">
+
+  <button onclick="exportJSON()">Export JSON</button>
+
+  <button onclick="exportCSV()">Export CSV</button>
+
+ </div>
 
 </header>
 
+<div class="layout">
+
+<aside>
+
+ <div class="navtitle">EXPLORATION</div>
+
+ <nav>
+
+  <button class="active" data-page="dashboard">▦ Tableau de bord</button>
+
+  <button data-page="catalog">▤ Catalogue mondial</button>
+
+  <button data-page="timeline">◷ Chronologie</button>
+
+  <button data-page="mapPage">◎ Carte mondiale</button>
+
+  <button data-page="favorites">★ Mes favoris</button>
+
+ </nav>
+
+ <div class="navtitle">GESTION</div>
+
+ <nav><button data-page="addPage">＋ Ajouter un événement</button></nav>
+
+ <div class="navtitle">WORLD TRAGEDIES</div>
+
+ <p class="notice" style="padding:0 10px">Une base documentaire évolutive consacrée aux événements tragiques de l'histoire humaine.</p>
+
+</aside>
+
 <main>
 
-<section class="hero">
+<section id="dashboard" class="page active">
 
-  <small>MÉMOIRE · HISTOIRE · DOCUMENTATION</small>
+ <h1>Tableau de bord</h1>
 
-  <h1>L'histoire du monde,<br>
+ <p class="subtitle">Explorer, comprendre et conserver la mémoire des grandes tragédies mondiales.</p>
 
-  <em>sans rien oublier.</em></h1>
+ <div class="stats">
 
-  <p>
+  <div class="stat"><strong id="totalStat">0</strong><span>Événements répertoriés</span></div>
 
-    Explorer les catastrophes naturelles, les guerres,
+  <div class="stat"><strong id="countryStat">0</strong><span>Pays et territoires</span></div>
 
-    les épidémies et les tragédies humaines qui ont marqué
+  <div class="stat"><strong id="categoryStat">0</strong><span>Catégories</span></div>
 
-    notre planète depuis les origines.
+  <div class="stat"><strong id="favoriteStat">0</strong><span>Favoris</span></div>
 
-  </p>
+ </div>
 
-</section>
+ <div class="section"><h2>Événements marquants</h2><div id="featured" class="grid"></div></div>
 
-<section class="stats">
-
-  <div class="stat">
-
-    <strong id="total">0</strong>
-
-    <small>ÉVÉNEMENTS INDEXÉS</small>
-
-  </div>
-
-  <div class="stat">
-
-    <strong id="categories">0</strong>
-
-    <small>CATÉGORIES</small>
-
-  </div>
-
-  <div class="stat">
-
-    <strong id="regions">0</strong>
-
-    <small>RÉGIONS</small>
-
-  </div>
-
-  <div class="stat">
-
-    <strong>∞</strong>
-
-    <small>HISTOIRE À EXPLORER</small>
-
-  </div>
+ <div class="section"><h2>Répartition par catégorie</h2><div id="categoryStats"></div></div>
 
 </section>
 
-<section class="toolbar">
+<section id="catalog" class="page">
 
-  <h2>Explorer les événements</h2>
+ <h1>Catalogue mondial</h1>
 
-  <div class="filters">
+ <p class="subtitle">Retrouver les événements par nom, pays, lieu, date ou catégorie.</p>
 
-    <input id="search" placeholder="Rechercher un événement, un pays...">
+ <div class="toolbar">
 
-    <select id="category">
+  <input id="search" class="search" placeholder="Rechercher un événement...">
 
-      <option value="">Toutes les catégories</option>
+  <select id="categoryFilter"><option value="">Toutes les catégories</option></select>
 
-    </select>
+  <select id="regionFilter"><option value="">Tous les pays</option></select>
 
-    <select id="sort">
+  <select id="sortFilter"><option value="date">Plus ancien</option><option value="recent">Plus récent</option><option value="name">Alphabétique</option></select>
 
-      <option value="old">Plus anciens</option>
+ </div>
 
-      <option value="new">Plus récents</option>
+ <p class="notice" id="resultCount"></p>
 
-    </select>
-
-  </div>
-
-  <div class="categories" id="chips"></div>
+ <div id="catalogGrid" class="grid"></div>
 
 </section>
 
-<section class="events" id="events"></section>
+<section id="timeline" class="page">
 
-<h2>Carte mondiale des catastrophes</h2>
+ <h1>Chronologie historique</h1>
 
-<div id="map"></div>
+ <p class="subtitle">Les événements classés dans l'ordre chronologique.</p>
+
+ <div id="timelineList" class="timeline"></div>
+
+</section>
+
+<section id="mapPage" class="page">
+
+ <h1>Carte mondiale</h1>
+
+ <p class="subtitle">Explorer les lieux des événements géolocalisés.</p>
+
+ <div id="map"></div>
+
+ <p class="notice">Connexion internet nécessaire pour charger les fonds de carte.</p>
+
+</section>
+
+<section id="favorites" class="page">
+
+ <h1>Mes favoris</h1>
+
+ <p class="subtitle">Ta sélection personnelle d'événements à conserver.</p>
+
+ <div id="favoritesGrid" class="grid"></div>
+
+</section>
+
+<section id="addPage" class="page">
+
+ <h1>Ajouter un événement</h1>
+
+ <p class="subtitle">Enrichir la base avec une nouvelle catastrophe ou tragédie.</p>
+
+ <div class="section">
+
+  <form id="addForm" class="formgrid">
+
+   <label class="full">Nom de l'événement<input name="name" required maxlength="120"></label>
+
+   <label>Date<input name="date" type="date" required></label>
+
+   <label>Pays<input name="country" required></label>
+
+   <label>Ville ou lieu<input name="place"></label>
+
+   <label>Catégorie<select name="category"><option>Catastrophe naturelle</option><option>Accident industriel</option><option>Accident de transport</option><option>Conflit et massacre</option><option>Incendie</option><option>Attentat</option><option>Épidémie</option><option>Autre</option></select></label>
+
+   <label>Nombre de victimes<input name="victims" placeholder="Ex. : environ 500"></label>
+
+   <label>Latitude<input name="lat" type="number" step="any" placeholder="Ex. : 48.85"></label>
+
+   <label>Longitude<input name="lng" type="number" step="any" placeholder="Ex. : 2.35"></label>
+
+   <label class="full">Description<textarea name="description" required></textarea></label>
+
+   <label class="full">Source documentaire<input name="source" placeholder="Référence ou URL"></label>
+
+   <div class="full"><button class="primary" type="submit">Enregistrer l'événement</button></div>
+
+  </form>
+
+ </div>
+
+</section>
 
 </main>
 
-<div class="modal" id="modal">
+</div>
 
-  <div class="modal-content">
+<footer>WORLD TRAGEDIES · Encyclopédie documentaire · Version personnelle</footer>
 
-    <button class="close" onclick="closeModal()">×</button>
+<div class="modal" id="detailModal" onclick="if(event.target===this)closeModal()">
 
-    <h2 id="modalTitle"></h2>
+ <div class="modalbox">
 
-    <p id="modalDate"></p>
+  <div class="modalhead"><h2 id="modalTitle"></h2><button onclick="closeModal()">✕</button></div>
 
-    <p id="modalDescription"></p>
+  <div class="notice" id="modalMeta"></div>
 
-    <p id="modalImpact"></p>
+  <p id="modalDescription"></p>
 
-    <p id="modalDeaths"></p>
+  <p id="modalVictims"></p>
 
-    <p id="modalSources"></p>
+  <p id="modalSource"></p>
 
-  </div>
+  <div class="actions"><button id="modalFavorite"></button><button id="modalDelete">Supprimer</button></div>
+
+ </div>
 
 </div>
 
@@ -580,695 +342,417 @@ input,select {
 
 <script>
 
-const EVENTS = [
+const initialEvents = [
 
-{
+{id:"e1",name:"Naufrage du Titanic",date:"1912-04-15",country:"Atlantique Nord",place:"Océan Atlantique",category:"Accident de transport",victims:"Environ 1 500",lat:41.73,lng:-49.95,description:"Le paquebot Titanic heurte un iceberg lors de son voyage inaugural entre Southampton et New York. Le navire sombre dans l'Atlantique Nord. La catastrophe entraîne une profonde évolution des règles internationales de sécurité maritime.",source:"Encyclopaedia Britannica"},
 
-id:1,
+{id:"e2",name:"Explosion de Halifax",date:"1917-12-06",country:"Canada",place:"Halifax, Nouvelle-Écosse",category:"Accident industriel",victims:"Environ 2 000",lat:44.65,lng:-63.57,description:"La collision de deux navires dans le port de Halifax provoque l'explosion d'un bateau chargé de munitions. La déflagration détruit une partie de la ville et provoque des milliers de victimes.",source:"Archives du Canada"},
 
-year:79,
+{id:"e3",name:"Séisme de San Francisco",date:"1906-04-18",country:"États-Unis",place:"San Francisco, Californie",category:"Catastrophe naturelle",victims:"Plusieurs milliers",lat:37.77,lng:-122.42,description:"Un puissant séisme frappe San Francisco. Les secousses et les incendies qui suivent détruisent une grande partie de la ville.",source:"USGS"},
 
-date:"79 après J.-C.",
+{id:"e4",name:"Grippe de 1918",date:"1918-01-01",country:"Monde",place:"Pandémie mondiale",category:"Épidémie",victims:"Des dizaines de millions",lat:40,lng:0,description:"La pandémie de grippe de 1918 se propage à travers le monde. Elle entraîne une mortalité exceptionnellement élevée sur plusieurs continents.",source:"Organisation mondiale de la santé"},
 
-title:"Éruption du Vésuve",
+{id:"e5",name:"Éruption de la montagne Pelée",date:"1902-05-08",country:"France",place:"Martinique",category:"Catastrophe naturelle",victims:"Environ 29 000",lat:14.82,lng:-61.17,description:"Une nuée ardente issue du volcan de la montagne Pelée détruit la ville de Saint-Pierre. La catastrophe est l'une des éruptions volcaniques les plus meurtrières de l'histoire moderne.",source:"Observatoire volcanologique"},
 
-category:"Catastrophe naturelle",
+{id:"e6",name:"Séisme de Messine",date:"1908-12-28",country:"Italie",place:"Sicile et Calabre",category:"Catastrophe naturelle",victims:"Environ 80 000",lat:38.19,lng:15.55,description:"Un violent séisme suivi d'un tsunami frappe le détroit de Messine. Les villes de Messine et Reggio de Calabre sont dévastées.",source:"INGV"},
 
-region:"Europe",
+{id:"e7",name:"Naufrage de l'Empress of Ireland",date:"1914-05-29",country:"Canada",place:"Fleuve Saint-Laurent",category:"Accident de transport",victims:"1 012",lat:48.62,lng:-68.25,description:"Le paquebot Empress of Ireland entre en collision avec un charbonnier dans le brouillard. Il sombre rapidement dans le fleuve Saint-Laurent.",source:"Canadian Museum of History"},
 
-place:"Pompéi, Italie",
+{id:"e8",name:"Bombardement de Guernica",date:"1937-04-26",country:"Espagne",place:"Guernica",category:"Conflit et massacre",victims:"Bilan débattu",lat:43.31,lng:-2.68,description:"La ville basque de Guernica est bombardée pendant la guerre civile espagnole. La destruction de la ville devient un symbole des souffrances des populations civiles pendant les conflits.",source:"Archives historiques"},
 
-lat:40.75,
+{id:"e9",name:"Catastrophe de Courrières",date:"1906-03-10",country:"France",place:"Pas-de-Calais",category:"Accident industriel",victims:"1 099",lat:50.46,lng:2.92,description:"Une explosion dans les mines de charbon du bassin de Courrières provoque l'une des pires catastrophes minières de l'histoire européenne.",source:"Archives nationales"},
 
-lng:14.49,
+{id:"e10",name:"Séisme de Tokyo-Yokohama",date:"1923-09-01",country:"Japon",place:"Région du Kantō",category:"Catastrophe naturelle",victims:"Plus de 100 000",lat:35.45,lng:139.64,description:"Un puissant séisme frappe la région du Kantō. Les incendies et destructions qui suivent ravagent Tokyo et Yokohama.",source:"Japan Meteorological Agency"},
 
-icon:"🌋",
+{id:"e11",name:"Naufrage du sous-marin Kursk",date:"2000-08-12",country:"Russie",place:"Mer de Barents",category:"Accident de transport",victims:"118",lat:69.64,lng:37.34,description:"Le sous-marin nucléaire russe K-141 Kursk connaît une série d'explosions et sombre en mer de Barents. Les 118 membres d'équipage périssent.",source:"Archives publiques"},
 
-description:"Une éruption majeure du Vésuve ensevelit plusieurs cités romaines.",
+{id:"e12",name:"Explosion de l'usine AZF",date:"2001-09-21",country:"France",place:"Toulouse",category:"Accident industriel",victims:"31",lat:43.58,lng:1.44,description:"Une explosion majeure se produit dans l'usine chimique AZF de Toulouse. Elle provoque des destructions considérables et de nombreux blessés.",source:"Préfecture de Haute-Garonne"},
 
-impact:"Destruction de Pompéi et Herculanum.",
+{id:"e13",name:"Tsunami de l'océan Indien",date:"2004-12-26",country:"Plusieurs pays",place:"Océan Indien",category:"Catastrophe naturelle",victims:"Environ 230 000",lat:3.3,lng:95.85,description:"Un séisme sous-marin au large de Sumatra déclenche un tsunami dévastateur qui frappe les côtes de plusieurs pays de l'océan Indien.",source:"UNESCO"},
 
-deaths:"Nombre exact de victimes inconnu."
+{id:"e14",name:"Ouragan Katrina",date:"2005-08-29",country:"États-Unis",place:"Louisiane et Mississippi",category:"Catastrophe naturelle",victims:"Plus de 1 800",lat:29.95,lng:-90.07,description:"L'ouragan Katrina frappe le sud des États-Unis. Les inondations provoquées par la rupture de digues dévastent notamment La Nouvelle-Orléans.",source:"NOAA"},
 
-},
+{id:"e15",name:"Explosion de Beyrouth",date:"2020-08-04",country:"Liban",place:"Port de Beyrouth",category:"Accident industriel",victims:"Plus de 200",lat:33.9,lng:35.52,description:"Une énorme explosion survient dans le port de Beyrouth. Elle détruit une partie de la ville, fait des milliers de blessés et laisse de nombreux habitants sans logement.",source:"Nations unies"},
 
-{
+{id:"e16",name:"Séisme et tsunami du Japon",date:"2011-03-11",country:"Japon",place:"Tōhoku",category:"Catastrophe naturelle",victims:"Environ 20 000 morts et disparus",lat:38.32,lng:142.37,description:"Un séisme de magnitude 9,0 déclenche un tsunami qui frappe la côte nord-est du Japon. La catastrophe entraîne également l'accident nucléaire de Fukushima.",source:"Japan Meteorological Agency"},
 
-id:2,
+{id:"e17",name:"Accident nucléaire de Tchernobyl",date:"1986-04-26",country:"Ukraine",place:"Pripiat",category:"Accident industriel",victims:"Bilan sanitaire complexe",lat:51.39,lng:30.1,description:"Le réacteur numéro 4 de la centrale nucléaire de Tchernobyl explose lors d'un essai de sécurité. La contamination radioactive entraîne l'évacuation de nombreuses populations.",source:"AIEA"},
 
-year:1347,
+{id:"e18",name:"Catastrophe de Bhopal",date:"1984-12-02",country:"Inde",place:"Bhopal",category:"Accident industriel",victims:"Plusieurs milliers de morts",lat:23.26,lng:77.41,description:"Une fuite de gaz toxique dans une usine de pesticides provoque une catastrophe sanitaire majeure dans la ville de Bhopal.",source:"Nations unies"},
 
-date:"1347–1353",
+{id:"e19",name:"Incendie de Notre-Dame",date:"2019-04-15",country:"France",place:"Paris",category:"Incendie",victims:"Aucune victime mortelle parmi le public",lat:48.85,lng:2.35,description:"Un incendie majeur ravage la toiture et la flèche de la cathédrale Notre-Dame de Paris. Le bâtiment historique est gravement endommagé.",source:"Ministère de la Culture"},
 
-title:"La peste noire",
-
-category:"Épidémie",
-
-region:"Europe",
-
-place:"Europe et bassin méditerranéen",
-
-lat:45,
-
-lng:15,
-
-icon:"☣️",
-
-description:"Une pandémie de peste ravage l'Europe et une partie de l'Eurasie.",
-
-impact:"Transformation démographique et sociale majeure.",
-
-deaths:"Les estimations historiques varient fortement."
-
-},
-
-{
-
-id:3,
-
-year:1755,
-
-date:"1 novembre 1755",
-
-title:"Séisme de Lisbonne",
-
-category:"Catastrophe naturelle",
-
-region:"Europe",
-
-place:"Lisbonne, Portugal",
-
-lat:38.72,
-
-lng:-9.13,
-
-icon:"🌊",
-
-description:"Un puissant séisme est suivi d'un tsunami et d'incendies.",
-
-impact:"Destruction massive de Lisbonne.",
-
-deaths:"Plusieurs dizaines de milliers selon les estimations."
-
-},
-
-{
-
-id:4,
-
-year:1815,
-
-date:"Avril 1815",
-
-title:"Éruption du Tambora",
-
-category:"Catastrophe naturelle",
-
-region:"Asie",
-
-place:"Indonésie",
-
-lat:-8.25,
-
-lng:118,
-
-icon:"🌋",
-
-description:"Une éruption volcanique extrêmement puissante bouleverse le climat mondial.",
-
-impact:"L'année 1816 devient connue comme l'année sans été.",
-
-deaths:"Bilan direct et indirect difficile à établir."
-
-},
-
-{
-
-id:5,
-
-year:1912,
-
-date:"15 avril 1912",
-
-title:"Naufrage du Titanic",
-
-category:"Accident maritime",
-
-region:"Atlantique",
-
-place:"Atlantique Nord",
-
-lat:41.73,
-
-lng:-49.94,
-
-icon:"🚢",
-
-description:"Le Titanic heurte un iceberg et sombre durant son voyage inaugural.",
-
-impact:"Réforme des règles internationales de sécurité maritime.",
-
-deaths:"Environ 1 500 morts."
-
-},
-
-{
-
-id:6,
-
-year:1914,
-
-date:"1914–1918",
-
-title:"Première Guerre mondiale",
-
-category:"Guerre",
-
-region:"Monde",
-
-place:"Europe et autres continents",
-
-lat:50,
-
-lng:15,
-
-icon:"⚔️",
-
-description:"Un conflit mondial oppose les puissances alliées aux Empires centraux.",
-
-impact:"Redécoupage des frontières et bouleversements politiques.",
-
-deaths:"Les estimations varient selon les méthodes de comptage."
-
-},
-
-{
-
-id:7,
-
-year:1939,
-
-date:"1939–1945",
-
-title:"Seconde Guerre mondiale",
-
-category:"Guerre",
-
-region:"Monde",
-
-place:"Monde entier",
-
-lat:48,
-
-lng:10,
-
-icon:"🌍",
-
-description:"Le conflit le plus meurtrier de l'histoire contemporaine.",
-
-impact:"Transformation profonde de l'ordre mondial.",
-
-deaths:"Environ 70 à 85 millions selon les estimations."
-
-},
-
-{
-
-id:8,
-
-year:1945,
-
-date:"6 août 1945",
-
-title:"Bombardement d'Hiroshima",
-
-category:"Catastrophe humaine",
-
-region:"Asie",
-
-place:"Hiroshima, Japon",
-
-lat:34.39,
-
-lng:132.45,
-
-icon:"☢️",
-
-description:"Une bombe atomique est larguée sur Hiroshima.",
-
-impact:"Début de l'ère nucléaire militaire.",
-
-deaths:"Le bilan varie selon la période étudiée."
-
-},
-
-{
-
-id:9,
-
-year:1970,
-
-date:"13 novembre 1970",
-
-title:"Cyclone de Bhola",
-
-category:"Catastrophe naturelle",
-
-region:"Asie",
-
-place:"Bangladesh",
-
-lat:22,
-
-lng:90,
-
-icon:"🌀",
-
-description:"Un cyclone tropical dévastateur frappe le delta du Gange.",
-
-impact:"Crise humanitaire et politique majeure.",
-
-deaths:"Estimations de plusieurs centaines de milliers."
-
-},
-
-{
-
-id:10,
-
-year:1984,
-
-date:"2–3 décembre 1984",
-
-title:"Catastrophe de Bhopal",
-
-category:"Accident industriel",
-
-region:"Asie",
-
-place:"Bhopal, Inde",
-
-lat:23.25,
-
-lng:77.41,
-
-icon:"🏭",
-
-description:"Une fuite de gaz toxique touche une zone densément peuplée.",
-
-impact:"Conséquences sanitaires et environnementales durables.",
-
-deaths:"Les bilans varient selon les périodes et les sources."
-
-},
-
-{
-
-id:11,
-
-year:1986,
-
-date:"26 avril 1986",
-
-title:"Catastrophe de Tchernobyl",
-
-category:"Accident nucléaire",
-
-region:"Europe",
-
-place:"Ukraine",
-
-lat:51.39,
-
-lng:30.10,
-
-icon:"☢️",
-
-description:"L'explosion du réacteur numéro 4 provoque des rejets radioactifs.",
-
-impact:"Évacuations et conséquences sanitaires à long terme.",
-
-deaths:"Les estimations de mortalité à long terme restent débattues."
-
-},
-
-{
-
-id:12,
-
-year:2004,
-
-date:"26 décembre 2004",
-
-title:"Tsunami de l'océan Indien",
-
-category:"Catastrophe naturelle",
-
-region:"Asie",
-
-place:"Océan Indien",
-
-lat:3.31,
-
-lng:95.85,
-
-icon:"🌊",
-
-description:"Un séisme sous-marin déclenche un tsunami dévastateur.",
-
-impact:"Développement des systèmes internationaux d'alerte.",
-
-deaths:"Plus de 200 000 morts selon les bilans généralement rapportés."
-
-},
-
-{
-
-id:13,
-
-year:2005,
-
-date:"Août 2005",
-
-title:"Ouragan Katrina",
-
-category:"Catastrophe naturelle",
-
-region:"Amérique",
-
-place:"Louisiane, États-Unis",
-
-lat:29.95,
-
-lng:-90.07,
-
-icon:"🌀",
-
-description:"Un ouragan provoque des inondations majeures à La Nouvelle-Orléans.",
-
-impact:"Débats sur la protection des populations et les infrastructures.",
-
-deaths:"Plus de 1 800 morts."
-
-},
-
-{
-
-id:14,
-
-year:2010,
-
-date:"12 janvier 2010",
-
-title:"Séisme en Haïti",
-
-category:"Catastrophe naturelle",
-
-region:"Amérique",
-
-place:"Port-au-Prince, Haïti",
-
-lat:18.54,
-
-lng:-72.34,
-
-icon:"🌎",
-
-description:"Un séisme dévastateur frappe la région de la capitale.",
-
-impact:"Destruction massive des infrastructures.",
-
-deaths:"Les estimations varient considérablement."
-
-},
-
-{
-
-id:15,
-
-year:2011,
-
-date:"11 mars 2011",
-
-title:"Fukushima",
-
-category:"Accident nucléaire",
-
-region:"Asie",
-
-place:"Japon",
-
-lat:37.42,
-
-lng:141.03,
-
-icon:"☢️",
-
-description:"Un séisme et un tsunami provoquent un accident nucléaire majeur.",
-
-impact:"Évacuations et réévaluation des normes de sûreté.",
-
-deaths:"Les décès directs et indirects doivent être distingués."
-
-},
-
-{
-
-id:16,
-
-year:2019,
-
-date:"Fin 2019",
-
-title:"Pandémie de COVID-19",
-
-category:"Épidémie",
-
-region:"Monde",
-
-place:"Mondiale",
-
-lat:0,
-
-lng:0,
-
-icon:"🦠",
-
-description:"Le SARS-CoV-2 se propage à l'échelle mondiale.",
-
-impact:"Crise sanitaire, économique et sociale.",
-
-deaths:"Les décès confirmés et la surmortalité sont des mesures différentes."
-
-}
+{id:"e20",name:"Incendie de la tour Grenfell",date:"2017-06-14",country:"Royaume-Uni",place:"Londres",category:"Incendie",victims:"72",lat:51.51,lng:-0.22,description:"Un incendie se propage rapidement dans la tour résidentielle Grenfell à Londres. La catastrophe soulève de graves questions sur la sécurité des bâtiments.",source:"Enquête publique britannique"}
 
 ];
 
-const categories = [...new Set(EVENTS.map(e=>e.category))];
+const STORAGE_KEY="worldTragediesDataV1";
 
-let map;
+const FAVORITES_KEY="worldTragediesFavoritesV1";
 
-function init() {
+let events=loadEvents();
 
-document.getElementById("total").textContent = EVENTS.length;
+let favorites=JSON.parse(localStorage.getItem(FAVORITES_KEY)||"[]");
 
-document.getElementById("categories").textContent = categories.length;
+let currentEvent=null;
 
-document.getElementById("regions").textContent =
+let map=null;
 
-new Set(EVENTS.map(e=>e.region)).size;
+let markers=[];
 
-const select = document.getElementById("category");
+function loadEvents(){
 
-categories.forEach(category=>{
+ try{
 
-  const option = document.createElement("option");
+  const saved=localStorage.getItem(STORAGE_KEY);
 
-  option.value = category;
+  return saved?JSON.parse(saved):initialEvents;
 
-  option.textContent = category;
+ }catch(e){return initialEvents}
 
-  select.appendChild(option);
+}
+
+function saveEvents(){localStorage.setItem(STORAGE_KEY,JSON.stringify(events))}
+
+function saveFavorites(){localStorage.setItem(FAVORITES_KEY,JSON.stringify(favorites))}
+
+function esc(value){
+
+ return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+}
+
+function dateText(value){
+
+ if(!value)return "Date inconnue";
+
+ const d=new Date(value+"T12:00:00");
+
+ return isNaN(d)?"Date inconnue":d.toLocaleDateString("fr-FR");
+
+}
+
+function getEvent(id){return events.find(e=>e.id===id)}
+
+function showPage(id){
+
+ document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id===id));
+
+ document.querySelectorAll("[data-page]").forEach(b=>b.classList.toggle("active",b.dataset.page===id));
+
+ if(id==="mapPage")setTimeout(initMap,100);
+
+ if(id==="catalog")renderCatalog();
+
+ if(id==="favorites")renderFavorites();
+
+ if(id==="timeline")renderTimeline();
+
+}
+
+document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
+
+function card(e){
+
+ return `<article class="event">
+
+ <div class="eventbar"></div><div class="eventbody">
+
+ <div class="meta">${esc(dateText(e.date))} · ${esc(e.country)}</div>
+
+ <h3>${esc(e.name)}</h3>
+
+ <div class="tags"><span class="tag">${esc(e.category)}</span><span class="tag">${esc(e.place||"Lieu non précisé")}</span></div>
+
+ <p>${esc(e.description.slice(0,155))}${e.description.length>155?"…":""}</p>
+
+ <div class="meta">Victimes : ${esc(e.victims||"Non renseigné")}</div>
+
+ <div class="actions">
+
+ <button data-detail="${esc(e.id)}">Voir la fiche</button>
+
+ <button class="favorite" data-fav="${esc(e.id)}">${favorites.includes(e.id)?"★":"☆"}</button>
+
+ </div></div></article>`;
+
+}
+
+function renderStats(){
+
+ document.getElementById("totalStat").textContent=events.length;
+
+ document.getElementById("countryStat").textContent=new Set(events.map(e=>e.country)).size;
+
+ document.getElementById("categoryStat").textContent=new Set(events.map(e=>e.category)).size;
+
+ document.getElementById("favoriteStat").textContent=favorites.length;
+
+ const counts={};
+
+ events.forEach(e=>counts[e.category]=(counts[e.category]||0)+1);
+
+ document.getElementById("categoryStats").innerHTML=Object.entries(counts).sort((a,b)=>b[1]-a[1]).map(([name,n])=>`
+
+ <p style="display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:9px 0;margin:0">
+
+ <span>${esc(name)}</span><strong>${n}</strong></p>`).join("");
+
+ document.getElementById("featured").innerHTML=events.slice().sort((a,b)=>b.date.localeCompare(a.date)).slice(0,3).map(card).join("");
+
+}
+
+function updateFilters(){
+
+ const cats=[...new Set(events.map(e=>e.category))].sort();
+
+ const countries=[...new Set(events.map(e=>e.country))].sort();
+
+ const cat=document.getElementById("categoryFilter");
+
+ const reg=document.getElementById("regionFilter");
+
+ const oldCat=cat.value,oldReg=reg.value;
+
+ cat.innerHTML='<option value="">Toutes les catégories</option>'+cats.map(x=>`<option>${esc(x)}</option>`).join("");
+
+ reg.innerHTML='<option value="">Tous les pays</option>'+countries.map(x=>`<option>${esc(x)}</option>`).join("");
+
+ cat.value=oldCat;reg.value=oldReg;
+
+}
+
+function renderCatalog(){
+
+ const q=document.getElementById("search").value.toLowerCase().trim();
+
+ const cat=document.getElementById("categoryFilter").value;
+
+ const country=document.getElementById("regionFilter").value;
+
+ const sort=document.getElementById("sortFilter").value;
+
+ let list=events.filter(e=>
+
+ (!cat||e.category===cat)&&(!country||e.country===country)&&
+
+ [e.name,e.country,e.place,e.category,e.description].join(" ").toLowerCase().includes(q));
+
+ if(sort==="recent")list.sort((a,b)=>b.date.localeCompare(a.date));
+
+ else if(sort==="name")list.sort((a,b)=>a.name.localeCompare(b.name));
+
+ else list.sort((a,b)=>a.date.localeCompare(b.date));
+
+ document.getElementById("resultCount").textContent=list.length+" événement(s) trouvé(s)";
+
+ document.getElementById("catalogGrid").innerHTML=list.length?list.map(card).join():'<div class="empty">Aucun événement trouvé.</div>';
+
+}
+
+function renderFavorites(){
+
+ const list=events.filter(e=>favorites.includes(e.id));
+
+ document.getElementById("favoritesGrid").innerHTML=list.length?list.map(card).join():'<div class="empty">Aucun favori pour le moment.</div>';
+
+}
+
+function renderTimeline(){
+
+ const list=events.slice().sort((a,b)=>a.date.localeCompare(b.date));
+
+ document.getElementById("timelineList").innerHTML=list.map(e=>`
+
+ <div class="timelineitem"><strong>${esc(dateText(e.date))}</strong>
+
+ <h3>${esc(e.name)}</h3><p>${esc(e.country)} · ${esc(e.category)} · ${esc(e.victims||"Victimes non renseignées")}</p>
+
+ <p style="margin-top:7px"><button data-detail="${esc(e.id)}">Consulter la fiche</button></p></div>`).join("");
+
+}
+
+function openDetail(id){
+
+ const e=getEvent(id);if(!e)return;
+
+ currentEvent=id;
+
+ document.getElementById("modalTitle").textContent=e.name;
+
+ document.getElementById("modalMeta").textContent=dateText(e.date)+" · "+e.country+" · "+e.place+" · "+e.category;
+
+ document.getElementById("modalDescription").textContent=e.description;
+
+ document.getElementById("modalVictims").textContent="Victimes : "+(e.victims||"Non renseigné");
+
+ const source=document.getElementById("modalSource");
+
+ source.textContent=e.source?"Source : "+e.source:"";
+
+ document.getElementById("modalFavorite").textContent=favorites.includes(id)?"★ Retirer des favoris":"☆ Ajouter aux favoris";
+
+ document.getElementById("modalDelete").style.display=e.custom?"block":"none";
+
+ document.getElementById("detailModal").classList.add("show");
+
+}
+
+function closeModal(){document.getElementById("detailModal").classList.remove("show")}
+
+function toggleFavorite(id){
+
+ if(favorites.includes(id))favorites=favorites.filter(x=>x!==id);
+
+ else favorites.push(id);
+
+ saveFavorites();refresh();
+
+ if(currentEvent===id)document.getElementById("modalFavorite").textContent=favorites.includes(id)?"★ Retirer des favoris":"☆ Ajouter aux favoris";
+
+}
+
+function deleteEvent(id){
+
+ const e=getEvent(id);
+
+ if(!e||!e.custom)return;
+
+ if(!confirm("Supprimer définitivement cet événement de ta base personnelle ?"))return;
+
+ events=events.filter(x=>x.id!==id);
+
+ favorites=favorites.filter(x=>x!==id);
+
+ saveEvents();saveFavorites();closeModal();refresh();
+
+}
+
+document.addEventListener("click",e=>{
+
+ const detail=e.target.closest("[data-detail]");
+
+ const fav=e.target.closest("[data-fav]");
+
+ if(detail)openDetail(detail.dataset.detail);
+
+ if(fav)toggleFavorite(fav.dataset.fav);
 
 });
 
-renderChips();
+document.getElementById("modalFavorite").addEventListener("click",()=>currentEvent&&toggleFavorite(currentEvent));
 
-renderEvents();
+document.getElementById("modalDelete").addEventListener("click",()=>currentEvent&&deleteEvent(currentEvent));
 
-initMap();
+document.getElementById("search").addEventListener("input",renderCatalog);
 
-}
+document.getElementById("categoryFilter").addEventListener("change",renderCatalog);
 
-function renderChips() {
+document.getElementById("regionFilter").addEventListener("change",renderCatalog);
 
-const container = document.getElementById("chips");
+document.getElementById("sortFilter").addEventListener("change",renderCatalog);
 
-container.innerHTML = `
+document.getElementById("addForm").addEventListener("submit",e=>{
 
-<button class="chip active" onclick="filterChip('')">
+ e.preventDefault();
 
-Tout
+ const f=new FormData(e.target);
 
-</button>
+ const lat=f.get("lat")===""?null:Number(f.get("lat"));
 
-`;
+ const lng=f.get("lng")===""?null:Number(f.get("lng"));
 
-categories.forEach(category=>{
+ if((lat===null)!==(lng===null)){alert("Renseigne les deux coordonnées ou laisse les deux champs vides.");return}
 
-  container.innerHTML += `
+ if(lat!==null&&(!Number.isFinite(lat)||!Number.isFinite(lng)||lat < -90||lat>90||lng < -180||lng>180)){alert("Coordonnées géographiques invalides.");return}
 
-  <button class="chip" onclick="filterChip('${category}')">
+ const item={
 
-  ${category}
+ id:"custom-"+Date.now(),custom:true,
 
-  </button>`;
+ name:f.get("name").trim(),date:f.get("date"),country:f.get("country").trim(),
 
-});
+ place:f.get("place").trim(),category:f.get("category"),
 
-}
+ victims:f.get("victims").trim(),lat,lng,
 
-function filterChip(category) {
+ description:f.get("description").trim(),source:f.get("source").trim()
 
-document.getElementById("category").value = category;
+ };
 
-renderEvents();
+ events.push(item);saveEvents();e.target.reset();refresh();showPage("catalog");
 
-}
-
-function renderEvents() {
-
-const search = document.getElementById("search").value.toLowerCase();
-
-const category = document.getElementById("category").value;
-
-const sort = document.getElementById("sort").value;
-
-let filtered = EVENTS.filter(event=>{
-
-return (
-
-event.title.toLowerCase().includes(search) ||
-
-event.place.toLowerCase().includes(search) ||
-
-event.description.toLowerCase().includes(search)
-
-) && (!category || event.category===category);
+ alert("Événement ajouté à ta base personnelle.");
 
 });
 
-filtered.sort((a,b)=>
+function exportJSON(){
 
-sort==="new" ? b.year-a.year : a.year-b.year
+ const blob=new Blob([JSON.stringify(events,null,2)],{type:"application/json"});
 
-);
-
-document.getElementById("events").innerHTML =
-
-filtered.map(event=>`
-
-<article class="event">
-
-<div class="date">${event.date}</div>
-
-<h3>${event.icon} ${event.title}</h3>
-
-<p>${event.description}</p>
-
-<p><strong>Lieu :</strong> ${event.place}</p>
-
-<button onclick="openEvent(${event.id})">
-
-Consulter la fiche
-
-</button>
-
-</article>
-
-`).join("");
+ downloadBlob(blob,"world-tragedies.json");
 
 }
 
-function openEvent(id) {
+function exportCSV(){
 
-const event = EVENTS.find(e=>e.id===id);
+ const columns=["name","date","country","place","category","victims","description","source","lat","lng"];
 
-if(!event) return;
+ const csv=[columns.join(";"),...events.map(e=>columns.map(k=>'"'+String(e[k]??"").replace(/"/g,'""')+'"').join(";"))].join("\r\n");
 
-document.getElementById("modalTitle").textContent=event.title;
-
-document.getElementById("modalDate").textContent=event.date;
-
-document.getElementById("modalDescription").textContent=event.description;
-
-document.getElementById("modalImpact").textContent="Conséquences : "+event.impact;
-
-document.getElementById("modalDeaths").textContent="Bilan humain : "+event.deaths;
-
-document.getElementById("modalSources").textContent="Lieu : "+event.place;
-
-document.getElementById("modal").style.display="block";
+ downloadBlob(new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8"}),"world-tragedies.csv");
 
 }
 
-function closeModal() {
+function downloadBlob(blob,name){
 
-document.getElementById("modal").style.display="none";
+ const url=URL.createObjectURL(blob);
 
-}
+ const a=document.createElement("a");a.href=url;a.download=name;a.click();
 
-function initMap() {
-
-if(!window.L) return;
-
-map=L.map("map").setView([20,5],2);
-
-L.tileLayer(
-
-"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-
-{
-
-attribution:"© OpenStreetMap"
+ setTimeout(()=>URL.revokeObjectURL(url),1000);
 
 }
 
-).addTo(map);
+function initMap(){
 
-EVENTS.filter(e=>e.lat!==0 || e.lng!==0).forEach(event=>{
+ if(map||!window.L)return;
 
-L.marker([event.lat,event.lng])
+ map=L.map("map").setView([25,10],2);
 
-.addTo(map)
+ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution:"© OpenStreetMap"}).addTo(map);
 
-.bindPopup(`
-
-<strong>${event.title}</strong><br>
-
-${event.date}<br>
-
-${event.place}
-
-`);
-
-});
+ refreshMarkers();
 
 }
 
-document.getElementById("search")
+function refreshMarkers(){
 
-.addEventListener("input",renderEvents);
+ if(!map)return;
 
-document.getElementById("category")
+ markers.forEach(m=>map.removeLayer(m));markers=[];
 
-.addEventListener("change",renderEvents);
+ events.filter(e=>Number.isFinite(Number(e.lat))&&Number.isFinite(Number(e.lng))).forEach(e=>{
 
-document.getElementById("sort")
+ const marker=L.marker([Number(e.lat),Number(e.lng)]).addTo(map);
 
-.addEventListener("change",renderEvents);
+ marker.bindPopup("<strong>"+esc(e.name)+"</strong><br>"+esc(e.country)+"<br>"+esc(e.category));
 
-init();
+ marker.on("click",()=>{});
+
+ markers.push(marker);
+
+ });
+
+}
+
+function refresh(){
+
+ renderStats();updateFilters();renderCatalog();renderFavorites();renderTimeline();refreshMarkers();
+
+}
+
+refresh();
 
 </script>
 
