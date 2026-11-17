@@ -1,1 +1,130 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0e14">
+  <meta name="description" content="Chronologie documentée des catastrophes, conflits et tragédies qui ont marqué la Terre et l'humanité.">
+  <title>WORLD TRAGEDIES — Atlas des événements</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#" aria-label="World Tragedies accueil">
+      <span class="brand-mark">WT</span><span><b>WORLD</b><small>TRAGEDIES</small></span>
+    </a>
+    <div class="side-label">EXPLORER</div>
+    <button class="nav-item active" data-view="overview"><span>◈</span> Vue générale</button>
+    <button class="nav-item" data-view="timeline"><span>◷</span> Chronologie</button>
+    <button class="nav-item" data-view="map"><span>◎</span> Carte mondiale</button>
+    <button class="nav-item" data-view="statistics"><span>▥</span> Statistiques</button>
+    <div class="side-label side-label-spaced">BIBLIOTHÈQUE</div>
+    <div id="categoryNav" class="category-nav"></div>
+    <div class="sidebar-bottom">
+      <div class="status-dot"></div><span>Base locale disponible</span>
+      <small>ÉDITION 01 · 2026</small>
+    </div>
+  </aside>
 
+  <main class="main">
+    <header class="topbar">
+      <button class="mobile-menu icon-btn" id="menuBtn" aria-label="Ouvrir le menu">☰</button>
+      <div class="breadcrumb">ATLAS HISTORIQUE <span>/</span> <b id="crumb">VUE GÉNÉRALE</b></div>
+      <div class="top-actions">
+        <div class="live-status"><i></i> MODE HORS LIGNE PRÊT</div>
+        <button class="icon-btn" id="aboutBtn" aria-label="À propos">ⓘ</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span></span> MÉMOIRE · HISTOIRE · DOCUMENTATION</div>
+        <h1>L’histoire du monde,<br><em>sans rien oublier.</em></h1>
+        <p>Explorer les événements qui ont bouleversé la planète, transformé les civilisations et marqué l’humanité.</p>
+        <div class="hero-meta"><span>◷ 4,54 milliards d’années</span><span>◆ Faits & estimations distingués</span></div>
+      </div>
+      <div class="hero-orbit" aria-hidden="true"><div class="orbit-ring"></div><div class="orbit-ring ring-two"></div><div class="planet">🌍</div><div class="orbit-point"></div></div>
+    </section>
+
+    <section class="stats-grid" id="summaryStats">
+      <article class="stat-card"><span class="stat-icon red">✦</span><div><small>ÉVÉNEMENTS INDEXÉS</small><strong id="totalEvents">—</strong><span class="stat-foot">dans la base actuelle</span></div></article>
+      <article class="stat-card"><span class="stat-icon amber">⌖</span><div><small>CATÉGORIES</small><strong id="totalCategories">—</strong><span class="stat-foot">types d’événements</span></div></article>
+      <article class="stat-card"><span class="stat-icon blue">◎</span><div><small>RÉGIONS COUVERTES</small><strong id="totalRegions">—</strong><span class="stat-foot">zones géographiques</span></div></article>
+      <article class="stat-card"><span class="stat-icon green">✓</span><div><small>SOURCES RÉFÉRENCÉES</small><strong id="totalSources">—</strong><span class="stat-foot">à consulter dans les fiches</span></div></article>
+    </section>
+
+    <section class="toolbar">
+      <div class="section-heading"><div><div class="eyebrow">CENTRE DE RECHERCHE</div><h2>Explorer les événements</h2></div><button class="text-btn" id="resetFilters">Réinitialiser ↗</button></div>
+      <div class="search-row">
+        <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Rechercher un événement, un lieu, une année…" autocomplete="off"><kbd>⌘ K</kbd></label>
+        <select id="sortSelect" aria-label="Trier les événements"><option value="oldest">Du plus ancien</option><option value="newest">Du plus récent</option><option value="title">Ordre alphabétique</option></select>
+      </div>
+      <div class="filters" id="filterChips"></div>
+    </section>
+
+    <section class="content-grid">
+      <div class="primary-column">
+        <div class="section-heading compact"><div><div class="eyebrow">SÉLECTION DOCUMENTÉE</div><h2 id="listTitle">Événements marquants</h2></div><span class="result-count" id="resultCount">— résultats</span></div>
+        <div id="eventList" class="event-list"></div>
+        <button class="load-more" id="loadMore">Afficher davantage <span>↓</span></button>
+      </div>
+      <aside class="right-column">
+        <div class="panel-card period-card">
+          <div class="panel-title"><div><span class="eyebrow">REPÈRES</span><h3>Les grandes périodes</h3></div><span class="tiny-icon">⌁</span></div>
+          <div class="period-list">
+            <button data-period="ancient"><span class="period-dot ancient"></span><span><b>Temps anciens</b><small>Avant 500</small></span><i>↗</i></button>
+            <button data-period="middle"><span class="period-dot middle"></span><span><b>Moyen Âge</b><small>500 – 1499</small></span><i>↗</i></button>
+            <button data-period="modern"><span class="period-dot modern"></span><span><b>Époque moderne</b><small>1500 – 1899</small></span><i>↗</i></button>
+            <button data-period="contemporary"><span class="period-dot contemporary"></span><span><b>Époque contemporaine</b><small>Depuis 1900</small></span><i>↗</i></button>
+          </div>
+        </div>
+        <div class="panel-card note-card">
+          <div class="note-symbol">!</div><div><b>Lire les chiffres avec prudence</b><p>Les bilans historiques peuvent varier. Les estimations, les disparus et les décès indirects sont signalés séparément lorsqu’ils sont connus.</p></div>
+        </div>
+        <div class="panel-card featured-card">
+          <span class="eyebrow">À LA UNE</span><h3>Un passé aux traces profondes</h3><p>Chaque fiche doit permettre de comprendre les faits, leur contexte et les limites des connaissances disponibles.</p>
+          <button id="featuredBtn">Découvrir la sélection <span>→</span></button>
+        </div>
+      </aside>
+    </section>
+
+    <section class="map-section hidden" id="mapSection">
+      <div class="section-heading"><div><div class="eyebrow">GÉOGRAPHIE DES ÉVÉNEMENTS</div><h2>Carte mondiale</h2><p>Les marqueurs localisent les événements disposant de coordonnées approximatives.</p></div></div>
+      <div id="worldMap" class="map-box"></div>
+    </section>
+
+    <section class="statistics-section hidden" id="statisticsSection">
+      <div class="section-heading"><div><div class="eyebrow">ANALYSE DE LA BASE</div><h2>Statistiques & répartition</h2></div></div>
+      <div class="charts-grid"><div class="panel-card"><h3>Événements par catégorie</h3><div id="categoryChart" class="bar-chart"></div></div><div class="panel-card"><h3>Événements par période</h3><div id="periodChart" class="bar-chart"></div></div></div>
+    </section>
+
+    <footer><span>WORLD TRAGEDIES <b>·</b> ATLAS HISTORIQUE</span><span>Une base évolutive. Toujours vérifier les sources.</span></footer>
+  </main>
+</div>
+
+<div class="modal-backdrop hidden" id="eventModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <article class="event-modal">
+    <button class="modal-close" id="closeModal" aria-label="Fermer">×</button>
+    <div class="modal-kicker" id="modalKicker">FICHE HISTORIQUE</div>
+    <h2 id="modalTitle"></h2><div class="modal-date" id="modalDate"></div>
+    <div class="modal-tags" id="modalTags"></div>
+    <div class="modal-body">
+      <div><span class="eyebrow">CONTEXTE</span><p id="modalSummary"></p></div>
+      <div><span class="eyebrow">CONSÉQUENCES</span><p id="modalImpact"></p></div>
+      <div class="fact-box"><span class="eyebrow">BILAN HUMAIN / DONNÉES</span><p id="modalDeaths"></p></div>
+      <div><span class="eyebrow">ÉTAT DES CONNAISSANCES</span><p id="modalConfidence"></p></div>
+      <div><span class="eyebrow">SOURCES À CONSULTER</span><div id="modalSources" class="source-list"></div></div>
+    </div>
+    <div class="modal-footer"><span id="modalLocation"></span><button id="closeModalBottom">Fermer la fiche</button></div>
+  </article>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
