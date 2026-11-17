@@ -1,0 +1,6 @@
+{
+  "appId": "com.worldtragedies.app",
+  "appName": "World Tragedies",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}

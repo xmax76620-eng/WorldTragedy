@@ -1,0 +1,684 @@
+[
+  {
+    "id": "permian-extinction",
+    "year": -252000000,
+    "date": "Vers 252 millions d’années avant notre ère",
+    "title": "Extinction Permien-Trias",
+    "category": "Extinction massive",
+    "region": "Monde",
+    "country": "Monde",
+    "lat": 50,
+    "lng": 90,
+    "deaths": null,
+    "deathsLabel": "Non applicable : disparition d’espèces, pas un bilan humain",
+    "summary": "La plus grave extinction de masse connue dans les archives fossiles. Une crise climatique et océanique majeure, associée notamment au volcanisme des trapps de Sibérie, provoque l’effondrement de nombreux écosystèmes.",
+    "impact": "Environ 80 à 90 % des espèces marines auraient disparu selon les estimations paléontologiques. Les écosystèmes mettent longtemps à se reconstituer.",
+    "confidence": "Événement établi ; proportions et mécanismes précis restent étudiés.",
+    "sources": [
+      {
+        "name": "Natural History Museum",
+        "url": "https://www.nhm.ac.uk/discover/what-killed-the-dinosaurs.html"
+      }
+    ]
+  },
+  {
+    "id": "cretaceous-extinction",
+    "year": -66000000,
+    "date": "Il y a environ 66 millions d’années",
+    "title": "Extinction Crétacé-Paléogène",
+    "category": "Extinction massive",
+    "region": "Amérique du Nord / Monde",
+    "country": "Mexique (impact de Chicxulub)",
+    "lat": 21.4,
+    "lng": -89.5,
+    "deaths": null,
+    "deathsLabel": "Environ 75 % des espèces, estimation paléontologique",
+    "summary": "Un astéroïde frappe la région de l’actuelle péninsule du Yucatán. L’impact déclenche des incendies, des tsunamis et un bouleversement climatique qui contribue à la disparition des dinosaures non aviens.",
+    "impact": "Transformation durable des écosystèmes et essor ultérieur de nombreux groupes de mammifères.",
+    "confidence": "Impact et extinction solidement établis ; détails des mécanismes encore étudiés.",
+    "sources": [
+      {
+        "name": "NASA – Asteroids",
+        "url": "https://science.nasa.gov/solar-system/asteroids/"
+      }
+    ]
+  },
+  {
+    "id": "thera",
+    "year": -1600,
+    "date": "Vers 1600 av. J.-C. (datation débattue)",
+    "title": "Éruption de Théra (Santorin)",
+    "category": "Éruption volcanique",
+    "region": "Europe",
+    "country": "Grèce",
+    "lat": 36.4,
+    "lng": 25.4,
+    "deaths": null,
+    "deathsLabel": "Bilan humain inconnu",
+    "summary": "Une éruption volcanique majeure détruit une partie de l’île de Théra et génère des retombées de cendres et des tsunamis régionaux. Son lien exact avec le déclin de la civilisation minoenne reste débattu.",
+    "impact": "Dégâts régionaux et perturbations des sociétés égéennes ; ampleur des conséquences humaines incertaine.",
+    "confidence": "Éruption établie ; datation et conséquences historiques discutées.",
+    "sources": [
+      {
+        "name": "Smithsonian Global Volcanism Program",
+        "url": "https://volcano.si.edu/"
+      }
+    ]
+  },
+  {
+    "id": "athens-plague",
+    "year": -430,
+    "date": "430–426 av. J.-C.",
+    "title": "Épidémie d’Athènes",
+    "category": "Épidémie",
+    "region": "Europe",
+    "country": "Grèce antique",
+    "lat": 37.98,
+    "lng": 23.72,
+    "deaths": null,
+    "deathsLabel": "Estimations antiques très incertaines",
+    "summary": "Une épidémie frappe Athènes pendant la guerre du Péloponnèse. Thucydide décrit les symptômes et les effets sociaux, mais l’agent pathogène exact n’est pas identifié avec certitude.",
+    "impact": "Pertes humaines importantes et conséquences politiques et militaires pour la cité.",
+    "confidence": "Épidémie historiquement attestée ; diagnostic moderne non confirmé.",
+    "sources": [
+      {
+        "name": "Perseus Digital Library – Thucydides",
+        "url": "https://www.perseus.tufts.edu/"
+      }
+    ]
+  },
+  {
+    "id": "antonine-plague",
+    "year": 165,
+    "date": "Vers 165–180",
+    "title": "Peste antonine",
+    "category": "Pandémie",
+    "region": "Europe / Asie",
+    "country": "Empire romain",
+    "lat": 41.9,
+    "lng": 12.5,
+    "deaths": null,
+    "deathsLabel": "Bilan global inconnu ; estimations historiques très variables",
+    "summary": "Une épidémie se diffuse dans l’Empire romain, notamment par les réseaux militaires et commerciaux. Elle est parfois attribuée à la variole ou à la rougeole, sans certitude diagnostique.",
+    "impact": "Pertes démographiques et pressions sur l’armée, l’économie et l’administration impériales.",
+    "confidence": "Épidémie attestée ; agent et bilan humain inconnus.",
+    "sources": [
+      {
+        "name": "Encyclopaedia Britannica",
+        "url": "https://www.britannica.com/event/Antonine-Plague"
+      }
+    ]
+  },
+  {
+    "id": "justinian-plague",
+    "year": 541,
+    "date": "À partir de 541",
+    "title": "Peste de Justinien",
+    "category": "Pandémie",
+    "region": "Europe / Afrique / Asie",
+    "country": "Bassin méditerranéen",
+    "lat": 37.98,
+    "lng": 23.72,
+    "deaths": null,
+    "deathsLabel": "Bilan démographique débattu",
+    "summary": "Une grande vague de peste due à Yersinia pestis touche l’Empire byzantin et les régions voisines, puis revient par vagues pendant plusieurs siècles.",
+    "impact": "Mortalité élevée dans plusieurs villes et perturbations économiques, militaires et fiscales.",
+    "confidence": "Présence de Yersinia pestis confirmée par des preuves génétiques ; bilan discuté.",
+    "sources": [
+      {
+        "name": "CDC – Plague",
+        "url": "https://www.cdc.gov/plague/"
+      }
+    ]
+  },
+  {
+    "id": "black-death",
+    "year": 1347,
+    "date": "1347–1353",
+    "title": "Peste noire",
+    "category": "Pandémie",
+    "region": "Europe / Afrique / Asie",
+    "country": "Europe, Afrique du Nord et Asie occidentale",
+    "lat": 43.3,
+    "lng": 5.37,
+    "deaths": null,
+    "deathsLabel": "Environ 25 à 50 millions de morts en Europe selon les estimations",
+    "summary": "La peste bubonique, causée par Yersinia pestis, se propage par les routes commerciales et frappe durement les populations d’Europe, d’Afrique du Nord et d’Asie occidentale.",
+    "impact": "Chute démographique majeure et transformations profondes du travail, des structures sociales et des économies.",
+    "confidence": "Agent pathogène établi ; estimations de mortalité variables.",
+    "sources": [
+      {
+        "name": "OMS – Plague",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/plague"
+      }
+    ]
+  },
+  {
+    "id": "lisbon-earthquake",
+    "year": 1755,
+    "date": "1er novembre 1755",
+    "title": "Séisme et tsunami de Lisbonne",
+    "category": "Séisme / Tsunami",
+    "region": "Europe",
+    "country": "Portugal",
+    "lat": 38.72,
+    "lng": -9.14,
+    "deaths": null,
+    "deathsLabel": "Environ 30 000 à 60 000 morts selon les estimations",
+    "summary": "Un puissant séisme, suivi d’un tsunami et d’incendies, dévaste Lisbonne et touche d’autres régions du Portugal, de l’Espagne et du Maroc.",
+    "impact": "Destruction urbaine majeure et influence durable sur la philosophie, les sciences du risque et la reconstruction de Lisbonne.",
+    "confidence": "Événement établi ; magnitude et bilan estimés rétrospectivement.",
+    "sources": [
+      {
+        "name": "USGS – Earthquake Hazards",
+        "url": "https://www.usgs.gov/programs/earthquake-hazards"
+      }
+    ]
+  },
+  {
+    "id": "taiping",
+    "year": 1850,
+    "date": "1850–1864",
+    "title": "Révolte des Taiping",
+    "category": "Guerre / Conflit",
+    "region": "Asie",
+    "country": "Chine",
+    "lat": 32.06,
+    "lng": 118.8,
+    "deaths": null,
+    "deathsLabel": "Environ 20 à 30 millions selon des estimations très incertaines",
+    "summary": "Une guerre civile oppose la dynastie Qing au mouvement des Taiping. Les combats, famines et maladies provoquent une catastrophe démographique majeure.",
+    "impact": "Dévastation de vastes régions et affaiblissement durable de l’empire Qing.",
+    "confidence": "Conflit établi ; bilan humain estimatif et discuté.",
+    "sources": [
+      {
+        "name": "Encyclopaedia Britannica – Taiping Rebellion",
+        "url": "https://www.britannica.com/event/Taiping-Rebellion"
+      }
+    ]
+  },
+  {
+    "id": "irish-famine",
+    "year": 1845,
+    "date": "1845–1852",
+    "title": "Grande famine irlandaise",
+    "category": "Famine",
+    "region": "Europe",
+    "country": "Irlande",
+    "lat": 53.35,
+    "lng": -6.26,
+    "deaths": null,
+    "deathsLabel": "Environ 1 million de morts ; émigration massive",
+    "summary": "Le mildiou détruit des récoltes de pommes de terre dont dépend une partie importante de la population. La vulnérabilité sociale, les conditions économiques et les politiques publiques aggravent la crise.",
+    "impact": "Effondrement démographique, émigration massive et conséquences politiques durables.",
+    "confidence": "Famine établie ; bilan approximatif généralement admis.",
+    "sources": [
+      {
+        "name": "National Archives of Ireland",
+        "url": "https://www.nationalarchives.ie/"
+      }
+    ]
+  },
+  {
+    "id": "krakatoa",
+    "year": 1883,
+    "date": "26–27 août 1883",
+    "title": "Éruption du Krakatoa",
+    "category": "Éruption volcanique",
+    "region": "Asie",
+    "country": "Indonésie",
+    "lat": -6.1,
+    "lng": 105.4,
+    "deaths": null,
+    "deathsLabel": "Environ 36 000 morts, principalement dus aux tsunamis",
+    "summary": "Une éruption explosive du Krakatoa provoque des tsunamis meurtriers dans le détroit de la Sonde et des effets atmosphériques observés à l’échelle mondiale.",
+    "impact": "Destruction de communautés côtières et perturbations atmosphériques temporaires.",
+    "confidence": "Événement établi ; bilan historique estimé.",
+    "sources": [
+      {
+        "name": "Smithsonian Global Volcanism Program",
+        "url": "https://volcano.si.edu/"
+      }
+    ]
+  },
+  {
+    "id": "galveston",
+    "year": 1900,
+    "date": "8 septembre 1900",
+    "title": "Ouragan de Galveston",
+    "category": "Cyclone / Inondation",
+    "region": "Amérique du Nord",
+    "country": "États-Unis",
+    "lat": 29.3,
+    "lng": -94.8,
+    "deaths": null,
+    "deathsLabel": "Environ 6 000 à 8 000 morts",
+    "summary": "Un ouragan dévastateur submerge Galveston avec une onde de tempête. Il reste l’une des catastrophes naturelles les plus meurtrières de l’histoire des États-Unis.",
+    "impact": "Ville lourdement détruite et reconstruction accompagnée de nouvelles mesures de protection côtière.",
+    "confidence": "Événement établi ; bilan exact impossible à fixer.",
+    "sources": [
+      {
+        "name": "NOAA – Galveston Hurricane of 1900",
+        "url": "https://www.weather.gov/hgx/1900galveston"
+      }
+    ]
+  },
+  {
+    "id": "titanic",
+    "year": 1912,
+    "date": "15 avril 1912",
+    "title": "Naufrage du Titanic",
+    "category": "Accident maritime",
+    "region": "Océan Atlantique",
+    "country": "Atlantique Nord",
+    "lat": 41.73,
+    "lng": -49.95,
+    "deaths": 1517,
+    "deathsLabel": "Environ 1 500 morts ; décompte exact variable selon les listes",
+    "summary": "Le paquebot Titanic heurte un iceberg lors de son voyage inaugural et coule dans l’Atlantique Nord. Le nombre insuffisant de places dans les canots contribue au lourd bilan.",
+    "impact": "Réformes internationales de la sécurité maritime et renforcement des règles de veille et de sauvetage.",
+    "confidence": "Événement bien documenté ; décompte exact varie légèrement selon les sources.",
+    "sources": [
+      {
+        "name": "Encyclopaedia Britannica – Titanic",
+        "url": "https://www.britannica.com/topic/Titanic"
+      }
+    ]
+  },
+  {
+    "id": "ww1",
+    "year": 1914,
+    "date": "1914–1918",
+    "title": "Première Guerre mondiale",
+    "category": "Guerre mondiale",
+    "region": "Monde",
+    "country": "Europe et autres théâtres",
+    "lat": 50.85,
+    "lng": 4.35,
+    "deaths": null,
+    "deathsLabel": "Environ 15 à 20 millions de morts, militaires et civils (estimations)",
+    "summary": "Conflit mondial opposant principalement les Alliés aux Empires centraux. La guerre industrielle, les combats, les famines et les maladies provoquent des pertes immenses.",
+    "impact": "Chute d’empires, redécoupage des frontières et bouleversements politiques et sociaux.",
+    "confidence": "Bilan global estimatif ; les méthodes de comptage varient.",
+    "sources": [
+      {
+        "name": "Imperial War Museums",
+        "url": "https://www.iwm.org.uk/history/what-you-need-to-know-about-the-first-world-war"
+      }
+    ]
+  },
+  {
+    "id": "armenian-genocide",
+    "year": 1915,
+    "date": "À partir de 1915",
+    "title": "Génocide arménien",
+    "category": "Génocide",
+    "region": "Asie / Europe",
+    "country": "Empire ottoman",
+    "lat": 39.93,
+    "lng": 32.86,
+    "deaths": null,
+    "deathsLabel": "Environ 1 à 1,5 million de victimes selon les estimations",
+    "summary": "Les autorités ottomanes organisent déportations, massacres et destructions de la population arménienne pendant la Première Guerre mondiale.",
+    "impact": "Destruction de communautés historiques, diaspora et mémoire durable du génocide.",
+    "confidence": "Faits historiques largement documentés ; estimations du nombre de victimes variables.",
+    "sources": [
+      {
+        "name": "United States Holocaust Memorial Museum",
+        "url": "https://encyclopedia.ushmm.org/"
+      }
+    ]
+  },
+  {
+    "id": "spanish-flu",
+    "year": 1918,
+    "date": "1918–1920",
+    "title": "Pandémie de grippe de 1918",
+    "category": "Pandémie",
+    "region": "Monde",
+    "country": "Monde",
+    "lat": 0,
+    "lng": 0,
+    "deaths": null,
+    "deathsLabel": "Au moins 50 millions de morts selon les estimations historiques courantes",
+    "summary": "Une pandémie de grippe se diffuse dans le monde à la fin de la Première Guerre mondiale. La mortalité est particulièrement élevée chez de jeunes adultes, en plus des personnes fragiles.",
+    "impact": "Crise sanitaire mondiale et accélération de l’organisation de la santé publique.",
+    "confidence": "Pandémie établie ; bilan mondial nécessairement estimatif.",
+    "sources": [
+      {
+        "name": "CDC – 1918 Pandemic",
+        "url": "https://www.cdc.gov/flu/pandemic-resources/1918-pandemic-h1n1.html"
+      }
+    ]
+  },
+  {
+    "id": "nanjing",
+    "year": 1937,
+    "date": "Décembre 1937 – début 1938",
+    "title": "Massacre de Nankin",
+    "category": "Massacre de masse",
+    "region": "Asie",
+    "country": "Chine",
+    "lat": 32.06,
+    "lng": 118.8,
+    "deaths": null,
+    "deathsLabel": "Estimations variables, de plusieurs dizaines à plus de 200 000 morts selon les périmètres",
+    "summary": "Après la prise de Nankin par l’armée impériale japonaise, des soldats commettent des massacres de civils et de prisonniers, des violences sexuelles et des pillages.",
+    "impact": "Traumatisme durable et documentation majeure des crimes de guerre.",
+    "confidence": "Massacres établis ; nombre de victimes et périmètres discutés par les historiens.",
+    "sources": [
+      {
+        "name": "Yale University Library",
+        "url": "https://web.library.yale.edu/"
+      }
+    ]
+  },
+  {
+    "id": "ww2",
+    "year": 1939,
+    "date": "1939–1945",
+    "title": "Seconde Guerre mondiale",
+    "category": "Guerre mondiale",
+    "region": "Monde",
+    "country": "Monde",
+    "lat": 52.52,
+    "lng": 13.4,
+    "deaths": null,
+    "deathsLabel": "Environ 70 à 85 millions de morts selon les estimations",
+    "summary": "Conflit mondial impliquant la majorité des grandes puissances. Il comprend combats, bombardements, famines, occupations et politiques d’extermination.",
+    "impact": "Destruction massive, création de l’ONU, début de l’ère nucléaire et recomposition de l’ordre mondial.",
+    "confidence": "Bilan estimatif ; les méthodes de comptage varient.",
+    "sources": [
+      {
+        "name": "Imperial War Museums",
+        "url": "https://www.iwm.org.uk/history/what-you-need-to-know-about-the-second-world-war"
+      }
+    ]
+  },
+  {
+    "id": "holocaust",
+    "year": 1941,
+    "date": "1941–1945",
+    "title": "Shoah",
+    "category": "Génocide",
+    "region": "Europe",
+    "country": "Europe occupée par l’Allemagne nazie",
+    "lat": 52.23,
+    "lng": 21.0,
+    "deaths": 6000000,
+    "deathsLabel": "Environ 6 millions de Juifs assassinés",
+    "summary": "L’Allemagne nazie et ses collaborateurs mettent en œuvre le génocide des Juifs d’Europe, par fusillades de masse, ghettos, déportations et centres de mise à mort.",
+    "impact": "Destruction de communautés et traumatisme mondial ; la mémoire de la Shoah est centrale dans l’étude et la prévention des génocides.",
+    "confidence": "Faits établis par une documentation historique abondante ; chiffre d’environ six millions solidement établi.",
+    "sources": [
+      {
+        "name": "United States Holocaust Memorial Museum",
+        "url": "https://encyclopedia.ushmm.org/content/en/article/introduction-to-the-holocaust"
+      }
+    ]
+  },
+  {
+    "id": "hiroshima",
+    "year": 1945,
+    "date": "6 août 1945",
+    "title": "Bombardement atomique d’Hiroshima",
+    "category": "Arme nucléaire",
+    "region": "Asie",
+    "country": "Japon",
+    "lat": 34.39,
+    "lng": 132.45,
+    "deaths": null,
+    "deathsLabel": "Environ 140 000 morts à la fin de 1945 (estimation)",
+    "summary": "Une bombe atomique est larguée sur Hiroshima. L’explosion, la chaleur, les incendies et les radiations tuent des dizaines de milliers de personnes immédiatement et dans les mois suivants.",
+    "impact": "Entrée dans l’ère nucléaire et conséquences sanitaires, politiques et géopolitiques durables.",
+    "confidence": "Événement établi ; bilan estimatif selon la période retenue.",
+    "sources": [
+      {
+        "name": "Hiroshima Peace Memorial Museum",
+        "url": "https://hpmmuseum.jp/"
+      }
+    ]
+  },
+  {
+    "id": "bengal-famine",
+    "year": 1943,
+    "date": "1943",
+    "title": "Famine du Bengale",
+    "category": "Famine",
+    "region": "Asie",
+    "country": "Inde britannique",
+    "lat": 22.57,
+    "lng": 88.36,
+    "deaths": null,
+    "deathsLabel": "Environ 2 à 3 millions de morts selon les estimations",
+    "summary": "Une famine majeure survient dans le contexte de la Seconde Guerre mondiale. Les perturbations d’approvisionnement, l’inflation, les pertes de récoltes et les décisions politiques contribuent à la catastrophe.",
+    "impact": "Mortalité massive et débat historique durable sur les responsabilités et les politiques coloniales.",
+    "confidence": "Famine établie ; causes relatives et bilan débattus.",
+    "sources": [
+      {
+        "name": "Cambridge University Press",
+        "url": "https://www.cambridge.org/"
+      }
+    ]
+  },
+  {
+    "id": "bhopal",
+    "year": 1984,
+    "date": "Nuit du 2 au 3 décembre 1984",
+    "title": "Catastrophe industrielle de Bhopal",
+    "category": "Accident industriel",
+    "region": "Asie",
+    "country": "Inde",
+    "lat": 23.26,
+    "lng": 77.41,
+    "deaths": null,
+    "deathsLabel": "Plusieurs milliers de morts ; estimations à long terme plus élevées et contestées",
+    "summary": "Une fuite de gaz toxique dans une usine de pesticides expose une population nombreuse au méthyl-isocyanate et à d’autres substances dangereuses.",
+    "impact": "Décès immédiats et séquelles sanitaires durables ; débat majeur sur la sécurité industrielle et la responsabilité des entreprises.",
+    "confidence": "Fuite et conséquences sanitaires établies ; bilan total contesté.",
+    "sources": [
+      {
+        "name": "Encyclopaedia Britannica – Bhopal disaster",
+        "url": "https://www.britannica.com/event/Bhopal-disaster"
+      }
+    ]
+  },
+  {
+    "id": "chernobyl",
+    "year": 1986,
+    "date": "26 avril 1986",
+    "title": "Catastrophe nucléaire de Tchernobyl",
+    "category": "Accident nucléaire",
+    "region": "Europe",
+    "country": "Ukraine (alors URSS)",
+    "lat": 51.39,
+    "lng": 30.1,
+    "deaths": null,
+    "deathsLabel": "Décès immédiats documentés ; effets sanitaires à long terme estimés différemment selon les études",
+    "summary": "Un essai de sûreté mal conduit et des défauts de conception provoquent la destruction du réacteur 4. Des matières radioactives sont dispersées sur une vaste zone.",
+    "impact": "Évacuation de populations, zone d’exclusion et réformes de la sûreté nucléaire.",
+    "confidence": "Accident établi ; estimations des décès futurs dépendent des modèles et hypothèses.",
+    "sources": [
+      {
+        "name": "UNSCEAR – Chernobyl",
+        "url": "https://www.unscear.org/unscear/en/areas-of-work/chernobyl.html"
+      }
+    ]
+  },
+  {
+    "id": "rwanda",
+    "year": 1994,
+    "date": "Avril–juillet 1994",
+    "title": "Génocide contre les Tutsi au Rwanda",
+    "category": "Génocide",
+    "region": "Afrique",
+    "country": "Rwanda",
+    "lat": -1.94,
+    "lng": 29.87,
+    "deaths": null,
+    "deathsLabel": "Environ 800 000 morts ou davantage selon les estimations",
+    "summary": "En environ cent jours, des centaines de milliers de Tutsi sont assassinés, ainsi que des Hutu opposés aux massacres. Des institutions et milices organisent les tueries.",
+    "impact": "Destruction de familles et communautés, déplacements massifs et conséquences politiques durables dans la région des Grands Lacs.",
+    "confidence": "Génocide établi ; chiffres exacts variables selon les sources.",
+    "sources": [
+      {
+        "name": "ONU – Outreach Programme on the 1994 Genocide against the Tutsi",
+        "url": "https://www.un.org/en/preventgenocide/rwanda/"
+      }
+    ]
+  },
+  {
+    "id": "indian-ocean-tsunami",
+    "year": 2004,
+    "date": "26 décembre 2004",
+    "title": "Séisme et tsunami de l’océan Indien",
+    "category": "Séisme / Tsunami",
+    "region": "Asie",
+    "country": "Indonésie, Sri Lanka, Inde, Thaïlande et autres pays",
+    "lat": 3.3,
+    "lng": 95.98,
+    "deaths": null,
+    "deathsLabel": "Environ 230 000 morts ou disparus",
+    "summary": "Un séisme de magnitude 9,1 au large de Sumatra déclenche un tsunami qui frappe les côtes de nombreux pays de l’océan Indien.",
+    "impact": "Destruction de communautés côtières, crise humanitaire et développement des systèmes d’alerte aux tsunamis.",
+    "confidence": "Événement établi ; bilan exact variable selon les pays et les personnes disparues.",
+    "sources": [
+      {
+        "name": "USGS – Sumatra-Andaman earthquake",
+        "url": "https://www.usgs.gov/"
+      }
+    ]
+  },
+  {
+    "id": "haiti-earthquake",
+    "year": 2010,
+    "date": "12 janvier 2010",
+    "title": "Séisme en Haïti",
+    "category": "Séisme",
+    "region": "Amérique du Nord",
+    "country": "Haïti",
+    "lat": 18.46,
+    "lng": -72.53,
+    "deaths": null,
+    "deathsLabel": "Estimations très variables ; bilan officiel et estimations indépendantes divergent fortement",
+    "summary": "Un séisme de magnitude 7,0 frappe près de Port-au-Prince et détruit de nombreux bâtiments, dont des infrastructures publiques essentielles.",
+    "impact": "Crise humanitaire majeure, déplacements de population et reconstruction de longue durée.",
+    "confidence": "Séisme établi ; bilan humain fortement débattu et dépendant des méthodes de comptage.",
+    "sources": [
+      {
+        "name": "USGS – Haiti earthquake 2010",
+        "url": "https://www.usgs.gov/"
+      }
+    ]
+  },
+  {
+    "id": "fukushima",
+    "year": 2011,
+    "date": "11 mars 2011",
+    "title": "Séisme, tsunami et accident nucléaire de Fukushima",
+    "category": "Catastrophe naturelle / Accident nucléaire",
+    "region": "Asie",
+    "country": "Japon",
+    "lat": 37.42,
+    "lng": 141.03,
+    "deaths": null,
+    "deathsLabel": "Plus de 18 000 morts ou disparus liés au séisme et au tsunami ; bilan radiologique direct distinct",
+    "summary": "Un séisme de magnitude 9,0 déclenche un tsunami qui endommage la centrale de Fukushima Daiichi et provoque un accident nucléaire majeur.",
+    "impact": "Évacuations, coûts économiques considérables et évolution des politiques énergétiques et de sûreté nucléaire.",
+    "confidence": "Événements établis ; distinguer les victimes du tsunami des effets radiologiques.",
+    "sources": [
+      {
+        "name": "IAEA – Fukushima Daiichi accident",
+        "url": "https://www.iaea.org/topics/response/fukushima-daiichi-nuclear-accident"
+      }
+    ]
+  },
+  {
+    "id": "ebola",
+    "year": 2014,
+    "date": "2014–2016",
+    "title": "Épidémie d’Ebola en Afrique de l’Ouest",
+    "category": "Épidémie",
+    "region": "Afrique",
+    "country": "Guinée, Liberia, Sierra Leone et pays voisins",
+    "lat": 8.5,
+    "lng": -11.8,
+    "deaths": 11325,
+    "deathsLabel": "11 325 décès rapportés dans les pays les plus touchés (bilan historique OMS)",
+    "summary": "La plus importante épidémie d’Ebola enregistrée jusqu’alors se propage en Afrique de l’Ouest, avec de lourdes conséquences sanitaires et sociales.",
+    "impact": "Renforcement des capacités de surveillance, de réponse épidémique et de coopération internationale.",
+    "confidence": "Données OMS historiques ; les chiffres varient selon les définitions et mises à jour.",
+    "sources": [
+      {
+        "name": "OMS – Ebola outbreak 2014–2016",
+        "url": "https://www.who.int/emergencies/situations/ebola-outbreak-2014-west-africa"
+      }
+    ]
+  },
+  {
+    "id": "covid-19",
+    "year": 2019,
+    "date": "Fin 2019 – années suivantes",
+    "title": "Pandémie de COVID-19",
+    "category": "Pandémie",
+    "region": "Monde",
+    "country": "Monde",
+    "lat": 30.59,
+    "lng": 114.3,
+    "deaths": null,
+    "deathsLabel": "Plus de 7 millions de décès officiellement rapportés ; surmortalité estimée supérieure",
+    "summary": "Le SARS-CoV-2 se diffuse à l’échelle mondiale et entraîne une pandémie déclarée par l’OMS en mars 2020. Les pays adoptent des mesures sanitaires et vaccinales diverses.",
+    "impact": "Crise sanitaire mondiale, perturbations économiques et scolaires et transformation durable de certains modes de vie.",
+    "confidence": "Pandémie établie ; les décès officiellement rapportés sous-estiment probablement la mortalité totale.",
+    "sources": [
+      {
+        "name": "OMS – COVID-19 dashboard",
+        "url": "https://data.who.int/dashboards/covid19"
+      }
+    ]
+  },
+  {
+    "id": "turkiye-syria",
+    "year": 2023,
+    "date": "6 février 2023",
+    "title": "Séismes de Turquie et de Syrie",
+    "category": "Séisme",
+    "region": "Asie",
+    "country": "Turquie et Syrie",
+    "lat": 37.17,
+    "lng": 37.03,
+    "deaths": null,
+    "deathsLabel": "Plus de 59 000 morts rapportés dans les deux pays",
+    "summary": "Deux puissants séismes, dont un de magnitude 7,8, frappent le sud de la Turquie et le nord de la Syrie, provoquant l’effondrement de nombreux bâtiments.",
+    "impact": "Destruction de logements et d’infrastructures, déplacements massifs et crise humanitaire prolongée.",
+    "confidence": "Événement établi ; bilans officiels évolutifs pendant les opérations.",
+    "sources": [
+      {
+        "name": "USGS – Türkiye-Syria earthquake sequence",
+        "url": "https://www.usgs.gov/"
+      }
+    ]
+  },
+  {
+    "id": "morocco-earthquake",
+    "year": 2023,
+    "date": "8 septembre 2023",
+    "title": "Séisme du Haut Atlas",
+    "category": "Séisme",
+    "region": "Afrique",
+    "country": "Maroc",
+    "lat": 31.11,
+    "lng": -8.44,
+    "deaths": null,
+    "deathsLabel": "Près de 3 000 morts rapportés",
+    "summary": "Un séisme de magnitude 6,8 frappe les montagnes du Haut Atlas et affecte de nombreux villages ainsi que la ville de Marrakech.",
+    "impact": "Habitations détruites, communautés isolées et reconstruction dans des zones rurales difficiles d’accès.",
+    "confidence": "Événement établi ; bilan officiel publié après la catastrophe.",
+    "sources": [
+      {
+        "name": "USGS – Morocco earthquake 2023",
+        "url": "https://www.usgs.gov/"
+      }
+    ]
+  }
+]
